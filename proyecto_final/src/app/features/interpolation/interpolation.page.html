@@ -19,14 +19,17 @@
 <section class="section">
   <h1>Interpolacion</h1>
 
-  <article class="card">
+  <!-- <article class="card">
     <h2>{{ studentFullName() }}</h2>
     <p>Email: {{ student().email }}</p>
     <p>Estado: {{ studentStatus() }}</p>
     <button type="button" (click)="toggleStudentStatus()">Cambiar estado</button>
-  </article>
+  </article> -->
 
-  <article class="card">
+  <!-- TODO -->
+  <!-- MEJORAR EL FRONT -->
+
+  <!-- <article class="card">
     <h2>{{ product().name }}</h2>
     <p>Precio base: ${{ product().price }}</p>
     <p>Categoria: {{ product().category }}</p>
@@ -40,5 +43,73 @@
     </label>
 
     <button type="button" (click)="addStock()">Agregar stock</button>
+  </article> -->
+
+  <article class="card">
+    <h2>Estudiantes</h2>
+    @if (selectedStudent) {
+      <div class="selected-student">
+        <h3>Estudiante seleccionado</h3>
+        <p>Nombre: {{ selectedStudent.firstName }}</p>
+        <p>Apellido: {{ selectedStudent.lastName }}</p>
+        <p>Email: {{ selectedStudent.email }}</p>
+        <p>Estado: {{ selectedStudent.activeLabel }}</p>
+        <p>Fecha de creación: {{ selectedStudent.createdAtLabel }}</p>
+      </div>
+    } @else {
+      <p>Selecciona un estudiante para visualizar más información.</p>
+    }
+    @if (studentsLoading()) {
+      <p>Cargando estudiantes...</p>
+    } @else if (studentsError()) {
+      <p class="error">{{ studentsError() }}</p>
+    } @else if (studentsList().length === 0) {
+      <p>No hay estudiantes para mostrar.</p>
+    } @else {
+      <div class="students-grid">
+        @for (student of studentsList(); track student.id) {
+          <app-student-card
+            [student]="student"
+            (selected)="onStudentSelected($event)"
+          ></app-student-card>
+        }
+      </div>
+    }
+
+    
+  </article>
+
+  <article class="card">
+    <h2>Productos</h2>
+    @if (selectedProduct) {
+      <div class="selected-product">
+        <h3>Producto seleccionado</h3>
+        <p>Nombre: {{ selectedProduct.name }}</p>
+        <p>Precio: {{ selectedProduct.priceLabel }}</p>
+        <p>Categoria: {{ selectedProduct.categoryName }}</p>
+        <p>Stock: {{ selectedProduct.stockLabel }}</p>
+        <p>Fecha de creación: {{ selectedProduct.createdAtLabel }}</p>
+      </div>
+    } @else {
+      <p>Selecciona un producto para visualizar más información.</p>
+    }
+    @if (productsLoading()) {
+      <p>Cargando productos...</p>
+    } @else if (productsError()) {
+      <p class="error">{{ productsError() }}</p>
+    } @else if (productsList().length === 0) {
+      <p>No hay productos para mostrar.</p>
+    } @else {
+      <div class="products-grid">
+        @for (product of productsList(); track product.id) {
+          <app-product-card
+            [product]="product"
+            (selected)="onProductSelected($event)"
+          ></app-product-card>
+        }
+      </div>
+    }
+
+    
   </article>
 </section>

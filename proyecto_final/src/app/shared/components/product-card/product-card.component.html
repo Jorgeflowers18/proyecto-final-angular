@@ -1,0 +1,8 @@
+<article class="product-card">
+  <h3>Producto: {{ product().name }}</h3>
+  <p>Precio: {{ product().priceLabel }}</p>
+  <p>Categoría: {{ product().categoryName }}</p>
+  <p>Stock: {{ product().stockLabel }}</p>
+
+  <button type="button" (click)="selectProduct()">Seleccionar</button>
+</article>

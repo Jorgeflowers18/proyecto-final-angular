@@ -10,8 +10,8 @@
   El padre decide que hacer cuando el hijo emite el evento.
 -->
 <article class="student-card">
-  <h3>{{ student().fullName }}</h3>
-  <p>{{ student().email }}</p>
+  <h3>Nombre Completo: {{ student().fullName }}</h3>
+  <p>Email: {{ student().email }}</p>
   <p>Estado: {{ student().activeLabel }}</p>
 
   <button type="button" (click)="selectStudent()">Seleccionar</button>

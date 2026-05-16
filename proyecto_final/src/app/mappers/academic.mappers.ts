@@ -1,3 +1,4 @@
+import { formatDate } from '@angular/common';
 import { CategoryApi, CategoryView } from '../models/category.model';
 import { ProductApi, ProductView } from '../models/product.model';
 import { StudentApi, StudentView } from '../models/student.model';
@@ -33,10 +34,11 @@ export function mapCategoryApiToView(category: CategoryApi): CategoryView {
     description: category.description ?? 'Sin descripcion',
     /*
      * TODO estudiante:
+     * JEFO COMPLETADO
      * Cambia este formato si quieres mostrar fecha con hora o con locale especifico.
      * Pista: prueba toLocaleDateString('es-EC') o Intl.DateTimeFormat.
      */
-    createdAtLabel: new Date(category.created_at).toLocaleDateString(),
+    createdAtLabel: new Date(category.created_at).toLocaleDateString('es-MX'),
   };
 }
 
@@ -48,7 +50,7 @@ export function mapProductApiToView(product: ProductApi): ProductView {
     /*
      * TODO estudiante:
      * Completa esta transformacion.
-     *
+     * JEFO COMPLETADO
      * Requisito:
      * - Si product.stock es 0, mostrar "Sin stock".
      * - Si product.stock es mayor a 0, mostrar "<cantidad> unidades".
@@ -57,16 +59,19 @@ export function mapProductApiToView(product: ProductApi): ProductView {
      *
      * Ahora se deja un texto temporal para que la pantalla compile.
      */
-    stockLabel: 'TODO: calcular stock',
+    //'TODO: calcular stock',
+    stockLabel: product.stock === 0 ? "Sin stock" : product.stock < 5 ? `${product.stock} unidades (Quedan pocas)` : `${product.stock} unidades`,
     /*
      * TODO estudiante:
+     * JEFO COMPLETADO
      * Reemplaza este texto por product.category_name.
      * Este TODO sirve para practicar remapeo snake_case -> camelCase.
-     *
+     * 
      * Criterio de aceptacion:
      * - En la pagina Servicios HTTP ya no debe aparecer "TODO: mapear categoria".
      */
-    categoryName: 'TODO: mapear categoria',
+    categoryName: product.category_name,
+    createdAtLabel: new Date(product.created_at).toLocaleDateString('es-MX'),
   };
 }
 
@@ -75,13 +80,17 @@ export function mapStudentApiToView(student: StudentApi): StudentView {
     id: student.id,
     /*
      * TODO estudiante:
+     * JEFO COMPLETADO
      * Prueba cambiar el orden a "Apellido, Nombre".
      * Tambien puedes normalizar espacios si el backend enviara valores con espacios extra.
      */
-    fullName: `${student.first_name} ${student.last_name}`,
+    fullName: `${student.last_name}, ${student.first_name} `.toUpperCase().trim(),
+    firstName: student.first_name,
+    lastName: student.last_name,
     email: student.email,
     active: student.active,
     activeLabel: student.active ? 'Activo' : 'Inactivo',
+    createdAtLabel: new Date(student.created_at).toLocaleDateString('es-MX'),
   };
 }
 
@@ -97,7 +106,7 @@ export function mapTaskApiToView(task: TaskApi): TaskView {
     /*
      * TODO estudiante:
      * Completa el formato de fecha.
-     *
+     * JEFO COMPLETADO
      * Requisito:
      * - Si task.due_date existe, mostrar una fecha legible.
      * - Si no existe, mostrar "Sin fecha".
@@ -105,7 +114,7 @@ export function mapTaskApiToView(task: TaskApi): TaskView {
      *
      * Ahora se deja parcialmente resuelto para que la app compile.
      */
-    dueDateLabel: task.due_date ? 'TODO: formatear fecha' : 'Sin fecha',
+    dueDateLabel: task.due_date ? formatDate(task.due_date, 'yyyy-MM-dd' ,'es-MX') : 'Sin fecha',
   };
 }
 
@@ -113,7 +122,7 @@ export function mapTaskStatusToLabel(status: TaskStatus): string {
   const labels: Record<TaskStatus, string> = {
     pending: 'Pendiente',
     in_progress: 'En progreso',
-    done: 'Terminada',
+    done: 'Completada',
   };
 
   return labels[status];
@@ -122,6 +131,7 @@ export function mapTaskStatusToLabel(status: TaskStatus): string {
 export function mapTaskPriorityToLabel(priority: TaskPriority): string {
   /*
    * TODO estudiante:
+   * JEFO COMPLETADO
    * Mejora estos textos para que sean mas utiles en la UI.
    * Ejemplo: high -> "Alta - resolver primero".
    *
@@ -132,7 +142,7 @@ export function mapTaskPriorityToLabel(priority: TaskPriority): string {
   const labels: Record<TaskPriority, string> = {
     low: 'Baja',
     medium: 'Media',
-    high: 'Alta',
+    high: 'Alta - Prioridad Principal',
   };
 
   return labels[priority];

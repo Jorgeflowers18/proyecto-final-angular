@@ -28,6 +28,7 @@ export interface TaskView {
   statusLabel: string;
   /*
    * TODO estudiante:
+   * JEFO COMPLETADO
    * Completar mejor el texto de prioridad en el mapper.
    * Por ejemplo: "Alta - resolver primero".
    */
@@ -35,6 +36,7 @@ export interface TaskView {
   studentLabel: string;
   /*
    * TODO estudiante:
+   * JEFO COMPLETADO
    * El mapper actual deja este campo parcialmente resuelto.
    * Debes mostrar una fecha legible si due_date existe.
    */

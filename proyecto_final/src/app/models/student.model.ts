@@ -22,17 +22,22 @@ export interface StudentView {
   email: string;
   /*
    * TODO estudiante:
+   * JEFO COMPLETADO
    * Revisar si conviene mantener active y activeLabel juntos.
    * Una practica posible es dejar active para logica y activeLabel para HTML.
    */
+  firstName: string;
+  lastName: string;
   activeLabel: string;
   active: boolean;
+  createdAtLabel: string;
 }
+
 
 /*
  * TODO estudiante:
  * Crear aqui la interfaz para enviar estudiantes al backend.
- *
+ * jefo COMPLETADO
  * Pista:
  * El backend espera snake_case:
  * {
@@ -42,3 +47,10 @@ export interface StudentView {
  *   active: boolean;
  * }
  */
+
+export interface CreateStudentPayload {
+  first_name: string;
+  last_name: string;
+  email: string;
+  active: boolean;
+}

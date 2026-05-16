@@ -27,7 +27,8 @@ export class NavbarComponent {
   readonly navItems: NavItem[] = [
     { label: 'Inicio', path: '/', icon: 'IN' },
     { label: 'Interpolacion', path: '/interpolacion', icon: 'IT' },
-    { label: 'Componentes', path: '/componentes', icon: 'CP' },
+    //  Se quita components porque se muestra mejor en otras páginas, enseñando que se agregaron nuevos componentes
+    // { label: 'Componentes', path: '/componentes', icon: 'CP' },
     { label: 'Control Flow', path: '/control-flow', icon: 'CF' },
     { label: 'Servicios HTTP', path: '/servicios-http', icon: 'API' },
     { label: 'Rutas', path: '/rutas', icon: 'RT' },

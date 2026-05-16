@@ -31,7 +31,12 @@ function quoteIdentifier(identifier: string): string {
 
 export async function waitForPostgres(): Promise<void> {
   logger.info("Verificando disponibilidad de PostgreSQL...");
-
+  console.log({
+    host: process.env.DB_HOST,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASSWORD,
+    db: process.env.DB_NAME,
+  });
   for (let attempt = 1; attempt <= env.database.waitRetries; attempt += 1) {
     const client = createAdminClient();
 

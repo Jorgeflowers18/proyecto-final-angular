@@ -11,8 +11,10 @@ import {
 import { ApiResponse } from '../models/api-response.model';
 import { CategoryApi, CategoryView } from '../models/category.model';
 import { ProductApi, ProductView } from '../models/product.model';
-import { StudentApi, StudentView } from '../models/student.model';
+import { StudentApi, StudentView, CreateStudentPayload} from '../models/student.model';
 import { CreateTaskPayload, TaskApi, TaskView } from '../models/task.model';
+
+
 
 @Injectable({ providedIn: 'root' })
 export class AcademicApiService {
@@ -28,9 +30,11 @@ export class AcademicApiService {
    *
    * Que debe completar el estudiante:
    * Actividad 1, nivel basico:
+   * jefo COMPLETADO
    * - Agregar tap() en getStudents() para observar la respuesta cruda.
    *
    * Actividad 2, nivel intermedio:
+   * jefo COMPLETADO
    * - Completar transformaciones marcadas como TODO en los mappers.
    *
    * Actividad 3, nivel intermedio:
@@ -62,6 +66,7 @@ export class AcademicApiService {
       tap((response) => console.log('Respuesta cruda products:', response)),
       /*
        * TODO estudiante:
+       * JEFO COMPLETADO
        * Revisa mapProductApiToView().
        * El metodo HTTP ya funciona, pero el mapper deja campos incompletos a proposito.
        */
@@ -73,6 +78,7 @@ export class AcademicApiService {
     return this.http.get<ApiResponse<StudentApi[]>>(`${API_BASE_URL}/students`).pipe(
       /*
        * TODO estudiante:
+       * JEFO COMPLETADO
        * Agrega tap() aqui para inspeccionar la respuesta cruda, igual que en products.
        *
        * Criterio de aceptacion:
@@ -82,6 +88,7 @@ export class AcademicApiService {
        * Pista:
        * tap((response) => console.log('Respuesta cruda students:', response))
        */
+      tap((response) => console.log('Respuesta cruda students:', response)),
       map((response) => response.data.map(mapStudentApiToView)),
     );
   }
@@ -91,6 +98,7 @@ export class AcademicApiService {
       tap((response) => console.log('Respuesta cruda tasks:', response)),
       /*
        * TODO estudiante:
+       * jefo COMPLETADO
        * El mapper de tasks deja dueDateLabel parcialmente resuelto.
        * Completa esa transformacion antes de usar la fecha en una pantalla real.
        */
@@ -123,12 +131,19 @@ export class AcademicApiService {
      * Se usa void payload para que TypeScript no marque el parametro como no usado
      * mientras el metodo queda como ejercicio pendiente.
      */
-    void payload;
-    return throwError(() => new Error('TODO estudiante: implementar POST /api/tasks'));
+    // void payload;
+    
+    return this.http.post<ApiResponse<TaskApi>>(`${API_BASE_URL}/tasks`, payload).pipe(
+      tap((response) => console.log('Respuesta cruda createTask:', response)),
+      map((response) => mapTaskApiToView(response.data)),
+    );
+    // return
+    // return throwError(() => new Error('TODO estudiante: implementar POST /api/tasks'));
   }
 
   /*
    * TODO estudiante:
+   * JEFO COMPLETADO
    * Crear metodo createStudent().
    *
    * Nivel: reto.
@@ -143,4 +158,12 @@ export class AcademicApiService {
    * - El payload debe usar los nombres que espera el backend: first_name,
    *   last_name, email y active.
    */
+
+  createStudent(payload: CreateStudentPayload): Observable<StudentView> {
+        
+    return this.http.post<ApiResponse<StudentApi>>(`${API_BASE_URL}/students`, payload).pipe(
+      tap((response) => console.log('Respuesta cruda createStudent:', response)),
+      map((response) => mapStudentApiToView(response.data)),
+    );
+  }
 }

@@ -20,6 +20,7 @@ export interface CategoryView {
   description: string;
   /*
    * TODO estudiante:
+   * JEFO COMPLETADO
    * Este campo ya esta declarado, pero revisa el mapper.
    * Debes decidir si quieres mostrar fecha corta, fecha larga o texto relativo.
    */

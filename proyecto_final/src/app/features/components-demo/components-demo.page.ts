@@ -27,26 +27,30 @@ export class ComponentsDemoPage {
    * - El hijo solo debe emitir eventos.
    * - El padre debe decidir que hacer con la lista.
    */
-  readonly students: StudentView[] = [
-    {
-      id: 1,
-      fullName: 'Ana Mora',
-      email: 'ana.mora@example.com',
-      active: true,
-      activeLabel: 'Activo',
-    },
-    {
-      id: 2,
-      fullName: 'Luis Vega',
-      email: 'luis.vega@example.com',
-      active: true,
-      activeLabel: 'Activo',
-    },
-  ];
+  // JEFO COMPLETADO
+  // SE PONEN DATOS ADICIONALES PARA QUE NO FALLE LA COMPILACIÓN DE LA APP
+  // readonly students: StudentView[] = [
+  //   {
+  //     id: 1,
+  //     fullName: 'Ana Mora',
+  //     email: 'ana.mora@example.com',
+  //     active: true,
+  //     activeLabel: 'Activo',
+  //     createdAtLabel: '01/01/2024',
+  //   },
+  //   {
+  //     id: 2,
+  //     fullName: 'Luis Vega',
+  //     email: 'luis.vega@example.com',
+  //     active: true,
+  //     activeLabel: 'Activo',
+  //     createdAtLabel: '01/01/2024',
+  //   },
+  // ];
 
-  selectedStudent: StudentView | null = null;
+  // selectedStudent: StudentView | null = null;
 
-  onStudentSelected(student: StudentView): void {
-    this.selectedStudent = student;
-  }
+  // onStudentSelected(student: StudentView): void {
+  //   this.selectedStudent = student;
+  // }
 }

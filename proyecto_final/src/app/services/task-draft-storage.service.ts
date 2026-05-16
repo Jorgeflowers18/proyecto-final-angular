@@ -1,9 +1,13 @@
 import { inject, Injectable } from '@angular/core';
 import { LocalStorageService } from '../core/storage/local-storage.service';
+import { CreateTaskPayload, TaskPriority, TaskStatus } from '../models/task.model';
 
 export interface TaskDraft {
   title: string;
   description: string;
+  priority: TaskPriority;
+  // status: TaskStatus;
+  dueDate: string;
 }
 
 const TASK_DRAFT_KEY = 'academic-task-draft';
@@ -15,6 +19,7 @@ export class TaskDraftStorageService {
    * Persistir un borrador pequeno para practicar localStorage.
    *
    * Que debe completar el estudiante:
+   * jefo completado
    * Guardar mas campos del formulario, por ejemplo priority o due_date.
    */
   private readonly storage = inject(LocalStorageService);
@@ -23,6 +28,8 @@ export class TaskDraftStorageService {
     return this.storage.getItem<TaskDraft>(TASK_DRAFT_KEY, {
       title: '',
       description: '',
+      priority: 'low',
+      dueDate: '',
     });
   }
 
