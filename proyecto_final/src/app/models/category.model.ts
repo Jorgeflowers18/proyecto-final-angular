@@ -26,3 +26,8 @@ export interface CategoryView {
    */
   createdAtLabel: string;
 }
+
+export interface CreateCategoryPayload {
+  name: string;
+  description: string;
+}

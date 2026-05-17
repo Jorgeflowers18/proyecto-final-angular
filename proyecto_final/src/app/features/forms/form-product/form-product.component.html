@@ -1,0 +1,79 @@
+<section class="section">
+  @if (errorMessage()) {
+    <div class="toast toast-error">
+      {{ errorMessage() }}
+    </div>
+  }
+
+  @if (successMessage()) {
+    <div class="toast toast-success">
+      {{ successMessage() }}
+    </div>
+  }
+
+  <h1>Crear producto</h1>
+
+  <form class="form" [formGroup]="productForm" (ngSubmit)="submit()">
+    <label>
+      Nombre
+      <input type="text" formControlName="name" />
+    </label>
+    @if (productForm.controls.name.touched && productForm.controls.name.invalid) {
+      <p class="error">El nombre del producto es obligatorio.</p>
+    }
+
+    <label>
+      Precio
+      <input type="number" formControlName="price" min="0" step="0.01" />
+    </label>
+    @if (productForm.controls.price.touched && productForm.controls.price.invalid) {
+      <p class="error">
+        @if (productForm.controls.price.hasError('required')) {
+          El precio es obligatorio.
+        } @else if (productForm.controls.price.hasError('min')) {
+          El precio no puede ser menor a 0.
+        }
+      </p>
+    }
+
+    <label>
+      Stock
+      <input type="number" formControlName="stock" min="0" step="1" />
+    </label>
+    @if (productForm.controls.stock.touched && productForm.controls.stock.invalid) {
+      <p class="error">
+        @if (productForm.controls.stock.hasError('required')) {
+          El stock es obligatorio.
+        } @else if (productForm.controls.stock.hasError('min')) {
+          El stock no puede ser menor a 0.
+        }
+      </p>
+    }
+
+    <label>
+      Categoría
+      @if (categories$ | async; as categories) {
+        <select formControlName="category_id">
+          <option [ngValue]="null">Selecciona una categoría</option>
+          @for (category of categories; track category.id) {
+            <option [value]="category.id">{{ category.name }}</option>
+          }
+        </select>
+      } @else {
+        <p>Cargando categorías...</p>
+      }
+    </label>
+    @if (productForm.controls.category_id.touched && productForm.controls.category_id.invalid) {
+      <p class="error">Debes seleccionar una categor�a.</p>
+    }
+
+    <div class="form-actions">
+      <button type="submit">Crear producto</button>
+    </div>
+  </form>
+
+  <article class="card">
+    <h2>Valores del formulario</h2>
+    <pre>{{ productForm.getRawValue() }}</pre>
+  </article>
+</section>

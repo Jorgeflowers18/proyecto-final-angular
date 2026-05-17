@@ -4,7 +4,7 @@ import { StudentCardComponent } from '../../shared/components/student-card/stude
 
 @Component({
   selector: 'app-components-demo-page',
-  imports: [StudentCardComponent],
+  // imports: [StudentCardComponent],
   templateUrl: './components-demo.page.html',
 })
 export class ComponentsDemoPage {

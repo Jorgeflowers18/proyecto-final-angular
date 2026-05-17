@@ -1,0 +1,16 @@
+<div class="forms-container">
+  <nav class="forms-nav">
+    <h2>Formularios</h2>
+    <ul>
+      @for (option of formOptions; track option.path) {
+        <li>
+          <a [routerLink]="option.path">{{ option.label }}</a>
+        </li>
+      }
+    </ul>
+  </nav>
+
+  <section class="forms-content px-4">
+    <router-outlet />
+  </section>
+</div>

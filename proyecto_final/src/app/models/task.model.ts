@@ -8,6 +8,9 @@
 export type TaskStatus = 'pending' | 'in_progress' | 'done';
 export type TaskPriority = 'low' | 'medium' | 'high';
 
+export const TASK_STATUS_OPTIONS: TaskStatus[] = ['pending', 'in_progress', 'done'];
+export const TASK_PRIORITY_OPTIONS: TaskPriority[] = ['low', 'medium', 'high'];
+
 export interface TaskApi {
   id: number;
   title: string;

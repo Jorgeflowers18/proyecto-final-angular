@@ -6,8 +6,10 @@ export interface TaskDraft {
   title: string;
   description: string;
   priority: TaskPriority;
-  // status: TaskStatus;
+  status: TaskStatus;
   dueDate: string;
+  student_id: number | null;
+  subTasks?: string[];
 }
 
 const TASK_DRAFT_KEY = 'academic-task-draft';
@@ -28,12 +30,16 @@ export class TaskDraftStorageService {
     return this.storage.getItem<TaskDraft>(TASK_DRAFT_KEY, {
       title: '',
       description: '',
+      status: 'pending',
       priority: 'low',
       dueDate: '',
+      student_id: null,
+      // subTasks: [], 
     });
   }
 
   saveDraft(draft: TaskDraft): void {
+    console.log('Guardando borrador:', draft);
     this.storage.setItem(TASK_DRAFT_KEY, draft);
   }
 

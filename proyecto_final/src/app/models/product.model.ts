@@ -37,3 +37,10 @@ export interface ProductView {
   categoryName: string;
   createdAtLabel: string;
 }
+
+export interface CreateProductPayload {
+  name: string;
+  price: number;
+  stock: number;
+  category_id: number;
+}

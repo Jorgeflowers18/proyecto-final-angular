@@ -1,0 +1,73 @@
+<section class="section">
+  @if (errorMessage()) {
+    <div class="toast toast-error">
+      {{ errorMessage() }}
+    </div>
+  }
+
+  @if (successMessage()) {
+    <div class="toast toast-success">
+      {{ successMessage() }}
+    </div>
+  }
+
+  <h1>Ingreso de estudiante</h1>
+
+  <form class="form" [formGroup]="studentForm" (ngSubmit)="submit()">
+    <label>
+      Nombre
+      <input type="text" formControlName="first_name" />
+    </label>
+    @if (studentForm.controls.first_name.touched && studentForm.controls.first_name.invalid) {
+      <p class="error">
+        @if (studentForm.controls.first_name.hasError('required')) {
+          El nombre es obligatorio.
+        } @else if (studentForm.controls.first_name.hasError('minlength')) {
+          El nombre debe tener al menos 3 caracteres.
+        }
+      </p>
+    }
+
+    <label>
+      Apellido
+      <input type="text" formControlName="last_name" />
+    </label>
+    @if (studentForm.controls.last_name.touched && studentForm.controls.last_name.invalid) {
+      <p class="error">
+        @if (studentForm.controls.last_name.hasError('required')) {
+          El apellido es obligatorio.
+        } @else if (studentForm.controls.last_name.hasError('minlength')) {
+          El apellido debe tener al menos 3 caracteres.
+        }
+      </p>
+    }
+
+    <label>
+      Email
+      <input type="email" formControlName="email" />
+    </label>
+    @if (studentForm.controls.email.touched && studentForm.controls.email.invalid) {
+      <p class="error">
+        @if (studentForm.controls.email.hasError('required')) {
+          El email es obligatorio.
+        } @else if (studentForm.controls.email.hasError('email')) {
+          Ingresa un email válido.
+        }
+      </p>
+    }
+
+    <label class="checkbox-label">
+      <input type="checkbox" formControlName="active" />
+      Activo
+    </label>
+
+    <div class="form-actions">
+      <button type="submit">Crear estudiante</button>
+    </div>
+  </form>
+
+  <article class="card">
+    <h2>Valores del formulario</h2>
+    <pre>{{ studentForm.getRawValue() }}</pre>
+  </article>
+</section>

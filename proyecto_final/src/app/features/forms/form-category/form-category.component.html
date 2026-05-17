@@ -1,0 +1,54 @@
+<section class="section">
+  @if (errorMessage()) {
+    <div class="toast toast-error">
+      {{ errorMessage() }}
+    </div>
+  }
+
+  @if (successMessage()) {
+    <div class="toast toast-success">
+      {{ successMessage() }}
+    </div>
+  }
+
+  <h1>Crear categoría</h1>
+
+  <form class="form" [formGroup]="categoryForm" (ngSubmit)="submit()">
+    <label>
+      Nombre
+      <input type="text" formControlName="name" />
+    </label>
+    @if (categoryForm.controls.name.touched && categoryForm.controls.name.invalid) {
+      <p class="error">
+        @if (categoryForm.controls.name.hasError('required')) {
+          El nombre de la categoría es obligatorio.
+        } @else if (categoryForm.controls.name.hasError('minlength')) {
+          El nombre debe tener al menos 3 caracteres.
+        }
+      </p>
+    }
+
+    <label>
+      Descripción
+      <textarea formControlName="description"></textarea>
+    </label>
+    @if (categoryForm.controls.description.touched && categoryForm.controls.description.invalid) {
+      <p class="error">
+        @if (categoryForm.controls.description.hasError('required')) {
+          La descripción es obligatoria.
+        } @else if (categoryForm.controls.description.hasError('minlength')) {
+          La descripción debe tener al menos 3 caracteres.
+        }
+      </p>
+    }
+
+    <div class="form-actions">
+      <button type="submit">Crear categoría</button>
+    </div>
+  </form>
+
+  <article class="card">
+    <h2>Valores del formulario</h2>
+    <pre>{{ categoryForm.getRawValue() }}</pre>
+  </article>
+</section>

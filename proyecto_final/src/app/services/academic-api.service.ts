@@ -9,8 +9,8 @@ import {
   mapTaskApiToView,
 } from '../mappers/academic.mappers';
 import { ApiResponse } from '../models/api-response.model';
-import { CategoryApi, CategoryView } from '../models/category.model';
-import { ProductApi, ProductView } from '../models/product.model';
+import { CategoryApi, CategoryView, CreateCategoryPayload } from '../models/category.model';
+import { CreateProductPayload, ProductApi, ProductView } from '../models/product.model';
 import { StudentApi, StudentView, CreateStudentPayload} from '../models/student.model';
 import { CreateTaskPayload, TaskApi, TaskView } from '../models/task.model';
 
@@ -38,9 +38,11 @@ export class AcademicApiService {
    * - Completar transformaciones marcadas como TODO en los mappers.
    *
    * Actividad 3, nivel intermedio:
+   * jefo COMPLETADO
    * - Implementar createTask() correctamente.
    *
    * Actividad 4, nivel reto:
+   * jefo COMPLETADO
    * - Crear createStudent() y getTaskById(id).
    *
    * Importante:
@@ -166,4 +168,34 @@ export class AcademicApiService {
       map((response) => mapStudentApiToView(response.data)),
     );
   }
+  createProduct(payload: CreateProductPayload): Observable<ProductView> {
+        
+    return this.http.post<ApiResponse<ProductApi>>(`${API_BASE_URL}/products`, payload).pipe(
+      tap((response) => console.log('Respuesta cruda createProduct:', response)),
+      map((response) => mapProductApiToView(response.data)),
+    );
+  }
+
+  createCategory(payload: CreateCategoryPayload): Observable<CategoryView> {
+        
+    return this.http.post<ApiResponse<CategoryApi>>(`${API_BASE_URL}/categories`, payload).pipe(
+      tap((response) => console.log('Respuesta cruda createCategory:', response)),
+      map((response) => mapCategoryApiToView(response.data)),
+    );
+  }
+
+//   searchByAlphaCode(code: string){
+
+//   return this.http.get<RESTCountry[]>(`${API_URL}/alpha/${code}`)
+//   .pipe(
+//     map((resp) =>
+//       CountryMapper.mapRestCountryArrayToCountryArray(resp)
+//     ),
+//     map((countries)=> countries.at(0)),
+//     catchError(() =>
+//       throwError(() => new Error(`No se pudo obtener paises con ese código ${code}`))
+//     )
+//   )
+// }
+
 }
