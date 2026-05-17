@@ -12,14 +12,19 @@ export class LocalStoragePage {
    * Objetivo del ejercicio:
    * Persistir informacion simple en localStorage.
    *
+   * Esto se demuestra en el Formulario de Task, ya que se guarda y se recupera los datos que se guardan
+   * 
    * Que debe completar el estudiante:
    * Actividad 1, nivel basico:
+   * JEFO COMPLETADO
    * - Guardar y recuperar el nombre del estudiante.
    *
    * Actividad 2, nivel intermedio:
+   * JEFO COMPLETADO
    * - Implementar un metodo para guardar filtros de busqueda de tasks.
    *
    * Actividad 3, nivel reto:
+   * JEFO COMPLETADO
    * - Usar esos filtros para inicializar una pantalla de listado.
    *
    * Pista:

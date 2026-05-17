@@ -3,6 +3,7 @@
   Practicar servicios HTTP, Observables, pipe(), map(), tap(), JSON y mappers.
 
   Que debe implementar el estudiante:
+  jefo completado
   - Agregar un POST usando AcademicApiService.createTask().
   - Mostrar un mensaje de carga/error.
   - Completar una transformacion adicional en academic.mappers.ts.
@@ -18,7 +19,7 @@
 -->
 <section class="section">
   <h1>Servicios HTTP</h1>
-
+  <h3>Se corrigen todos los mapeos del API</h3>
   <article class="card">
     <h2>JSON de ejemplo</h2>
     <pre>{{ exampleJson | json }}</pre>
@@ -46,6 +47,7 @@
           <p>{{ product.categoryName }}</p>
           <!--
             TODO estudiante:
+            jefo completado
             Si ves "TODO: calcular stock" o "TODO: mapear categoria",
             el problema NO esta en este HTML.
             Debes resolverlo en mapProductApiToView().
@@ -59,9 +61,10 @@
   @if (tasks$ | async; as tasks) {
     <ul>
       @for (task of tasks; track task.id) {
-        <li>{{ task.title }} - {{ task.statusLabel }} - {{ task.studentLabel }}</li>
+        <li>{{ task.title }} - {{ task.statusLabel }} - {{ task.studentLabel }} - {{task.dueDateLabel}}</li>
         <!--
           TODO estudiante:
+          jefo completado
           Agrega task.dueDateLabel cuando completes el mapper de fecha.
         -->
       }

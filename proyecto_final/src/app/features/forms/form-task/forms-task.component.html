@@ -38,6 +38,7 @@
 
     <!--
       TODO estudiante:
+      JEFO COMPLETADO - SE AGREGA COMO MENSAJE FLOTANTE PARA MEJOR VISUALIZACIÓN
       Cuando agregues Validators.minLength(3), muestra aqui un mensaje si el titulo es muy corto.
       Criterio de aceptacion: el mensaje debe aparecer solo si el control fue tocado.
     -->
@@ -109,8 +110,4 @@
     <button type="submit" (click)="submit()">Enviar</button>
   </form>
 
-  <article class="card">
-    <h2>Valor actual del formulario</h2>
-    <pre>{{ taskForm.getRawValue() }}</pre>
-  </article>
 </section>

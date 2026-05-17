@@ -1,16 +1,23 @@
 <div class="forms-container">
-  <nav class="forms-nav">
-    <h2>Formularios</h2>
-    <ul>
+  <div class="forms-header">
+    <h1>Formularios</h1>
+    <h3>Se crean formularios aplicando directivas de formularios reactivos</h3>
+    <nav class="forms-nav">
       @for (option of formOptions; track option.path) {
-        <li>
-          <a [routerLink]="option.path">{{ option.label }}</a>
-        </li>
+        <a
+          class="form-button"
+          [routerLink]="option.path"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: true }"
+        >
+          <span class="button-icon">{{ option.icon }}</span>
+          <span class="button-label">{{ option.label }}</span>
+        </a>
       }
-    </ul>
-  </nav>
+    </nav>
+  </div>
 
-  <section class="forms-content px-4">
+  <section class="forms-content">
     <router-outlet />
   </section>
 </div>

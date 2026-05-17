@@ -66,41 +66,9 @@ export const routes: Routes = [
       {
         path: 'formularios',
         title: 'Formularios',
-        loadComponent: () =>
-          import('./features/forms/forms-page/forms-page').then((m) => m.FormsPage),
-        children: [
-          {
-            path: 'tasks',
-            loadComponent: () =>
-              import('./features/forms/form-task/forms-task.component').then((m) => m.FormTaskComponent),
-          },
-          {
-            path: 'estudiantes',
-            loadComponent: () =>
-              import('./features/forms/form-student/form-student.component').then(
-                (m) => m.FormStudentComponent,
-              ),
-          },
-          {
-            path: 'productos',
-            loadComponent: () =>
-              import('./features/forms/form-product/form-product.component').then(
-                (m) => m.FormProductComponent,
-              ),
-          },
-          {
-            path: 'categorias',
-            loadComponent: () =>
-              import('./features/forms/form-category/form-category.component').then(
-                (m) => m.FormCategoryComponent,
-              ),
-          },
-          {
-            path: '',
-            redirectTo: 'tasks',
-            pathMatch: 'full',
-          },
-        ],
+        loadChildren: () =>
+          import('./features/forms/forms.routes').then((m) => m.formsRoutes),
+        
       },
       {
         path: 'local-storage',

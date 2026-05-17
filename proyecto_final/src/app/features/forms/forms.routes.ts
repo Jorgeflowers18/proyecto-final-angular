@@ -11,28 +11,39 @@ export const formsRoutes: Routes = [
     {
         path:'',
         component: FormsPage,
-        children:[
-            {
-                path:'categories',
-                component:FormCategoryComponent
-            },
-            {
-                path:'products',
-                component:FormProductComponent
-            },
-            {
-                path:'students',
-                component:FormStudentComponent
-            },
-            {
-                path:'tasks',
-                component:FormTaskComponent
-            },
-            {
-                path:'**',
-                redirectTo: 'tasks',
-            }
-        ]
+        children: [
+          {
+            path: 'tasks',
+            loadComponent: () =>
+              import('./form-task/forms-task.component').then((m) => m.FormTaskComponent),
+          },
+          {
+            path: 'estudiantes',
+            loadComponent: () =>
+              import('./form-student/form-student.component').then(
+                (m) => m.FormStudentComponent,
+              ),
+          },
+          {
+            path: 'productos',
+            loadComponent: () =>
+              import('./form-product/form-product.component').then(
+                (m) => m.FormProductComponent,
+              ),
+          },
+          {
+            path: 'categorias',
+            loadComponent: () =>
+              import('./form-category/form-category.component').then(
+                (m) => m.FormCategoryComponent,
+              ),
+          },
+          {
+            path: '',
+            redirectTo: 'tasks',
+            pathMatch: 'full',
+          },
+        ],
     },
 
 ];

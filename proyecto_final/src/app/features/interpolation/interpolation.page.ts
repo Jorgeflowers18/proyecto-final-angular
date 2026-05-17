@@ -7,6 +7,7 @@ import { ProductCardComponent } from '../../shared/components/product-card/produ
 
 @Component({
   selector: 'app-interpolation-page',
+  styleUrls: ['./interpolation.page.css'],
   imports: [StudentCardComponent, ProductCardComponent],
   templateUrl: './interpolation.page.html',
 })
