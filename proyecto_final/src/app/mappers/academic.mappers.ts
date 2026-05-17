@@ -38,7 +38,7 @@ export function mapCategoryApiToView(category: CategoryApi): CategoryView {
      * Cambia este formato si quieres mostrar fecha con hora o con locale especifico.
      * Pista: prueba toLocaleDateString('es-EC') o Intl.DateTimeFormat.
      */
-    createdAtLabel: new Date(category.created_at).toLocaleDateString('es-MX'),
+    createdAtLabel: new Date(category.created_at).toLocaleDateString('es-EC'),
   };
 }
 
@@ -71,7 +71,7 @@ export function mapProductApiToView(product: ProductApi): ProductView {
      * - En la pagina Servicios HTTP ya no debe aparecer "TODO: mapear categoria".
      */
     categoryName: product.category_name,
-    createdAtLabel: new Date(product.created_at).toLocaleDateString('es-MX'),
+    createdAtLabel: new Date(product.created_at).toLocaleDateString('es-EC'),
   };
 }
 
@@ -90,7 +90,7 @@ export function mapStudentApiToView(student: StudentApi): StudentView {
     email: student.email,
     active: student.active,
     activeLabel: student.active ? 'Activo' : 'Inactivo',
-    createdAtLabel: new Date(student.created_at).toLocaleDateString('es-MX'),
+    createdAtLabel: new Date(student.created_at).toLocaleDateString('es-EC'),
   };
 }
 
@@ -114,7 +114,7 @@ export function mapTaskApiToView(task: TaskApi): TaskView {
      *
      * Ahora se deja parcialmente resuelto para que la app compile.
      */
-    dueDateLabel: task.due_date ? formatDate(task.due_date, 'yyyy-MM-dd' ,'es-MX') : 'Sin fecha',
+    dueDateLabel: task.due_date ? formatDate(task.due_date, 'fullDate', 'es-EC', 'UTC') : 'Sin fecha',
   };
 }
 
