@@ -8,12 +8,15 @@ export const routesDemoRoutes: Routes = [
    *
    * Que debe completar el estudiante:
    * Actividad 1, nivel basico:
+   * JEFO COMPLETADO
    * - Identificar cual es la ruta padre y cuales son rutas hijas.
    *
    * Actividad 2, nivel intermedio:
+   * JEFO COMPLETADO
    * - Agregar una ruta hija nueva, por ejemplo "crear".
    *
    * Actividad 3, nivel reto:
+   *
    * - Crear una ruta "tasks/:id" que lea un id real y consulte el backend.
    *
    * Criterio de aceptacion:

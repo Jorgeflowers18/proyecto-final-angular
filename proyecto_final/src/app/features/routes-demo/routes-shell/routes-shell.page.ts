@@ -10,7 +10,7 @@ export class RoutesShellPage {
   /*
    * Objetivo del ejercicio:
    * Contener rutas hijas dentro de /rutas.
-   *
+   * JEFO COMPLETADO - SE IMPLEMENTA EN FORMS
    * Que debe completar el estudiante:
    * Agregar navegacion secundaria si existen mas rutas hijas.
    */
